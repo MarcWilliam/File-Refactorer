@@ -6,7 +6,6 @@
 package Models;
 
 import java.util.*;
-import java.util.regex.*;
 
 /**
  *
@@ -42,15 +41,14 @@ public class Actions {
 		 * ******************************************************************************* *
 		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
 		 */
-		addAction("Replace", "replace all orurence of that string",
-				(BatchRename.IRename) (String target, String replacement, String oldName, boolean isFile) -> {
-					target = Pattern.quote(target);
+		addAction("Replace", "replace all ocucence of that string",
+				(BatchRename.IRename) (final String target, final String replacement, final String oldName, final boolean isFile) -> {
 					return oldName.replace(target, replacement);
 				});
 
-		addAction("Regex", "replace all orurence of that string using regex",
-				(BatchRename.IRename) (String target, String replacement, String oldName, boolean isFile) -> {
-					return oldName.replace(target, replacement);
+		addAction("Regex", "replace all ocucence of that string using regex",
+				(BatchRename.IRename) (final String target, final String replacement, final String oldName, final boolean isFile) -> {
+					return oldName.replaceAll(target, replacement);
 				});
 
 		/**

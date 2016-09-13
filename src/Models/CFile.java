@@ -39,7 +39,11 @@ public class CFile implements GUItabelList.ITable {
 		if (NewFile.exists() || this.file.getName().equals(this.newName) || this.oldName.equals(this.newName)) {
 			return false;
 		} else {
-			return this.file.renameTo(NewFile);
+			if (this.file.renameTo(NewFile)) {
+				this.file = NewFile;
+				return true;
+			}
+			return false;
 		}
 	}
 
@@ -50,20 +54,16 @@ public class CFile implements GUItabelList.ITable {
 	 */
 	public boolean undoRename() {
 		File NewFile = new File(this.Path + "\\" + this.oldName);
-		if (NewFile.exists() || this.file.getName().equals(this.oldName) || this.oldName.equals(this.newName)) {
+
+		if (NewFile.exists()) {//|| this.file.getName().equals(this.oldName) || this.oldName.equals(this.newName)) {
 			return false;
 		} else {
-			return this.file.renameTo(NewFile);
+			if (this.file.renameTo(NewFile)) {
+				this.file = NewFile;
+				return true;
+			}
+			return false;
 		}
-	}
-
-	@Override
-	public String toString() {
-		return "CFile{"
-				+ "\n\t" + "Path=" + Path
-				+ "\n\t" + ", oldName=" + oldName
-				+ "\n\t" + ", newName=" + newName
-				+ '}';
 	}
 
 	@Override

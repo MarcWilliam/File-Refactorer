@@ -38,7 +38,7 @@ public class GUI extends javax.swing.JFrame {
         jTextField_FilePath = new javax.swing.JTextField();
         jButton_Demo = new javax.swing.JButton();
         jLabel_Action = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton_Undo = new javax.swing.JButton();
         jComboBox_Action = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
@@ -113,11 +113,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_Action.setText("Action");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Undo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Undo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_Undo.setText("Undo");
+        jButton_Undo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_UndoActionPerformed(evt);
             }
         });
 
@@ -138,7 +138,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox_isFiles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jButton_Undo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Demo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,13 +188,12 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jCheckBox_SubFolders)
                         .addComponent(jCheckBox_isFolder)
                         .addComponent(jCheckBox_isFiles))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Undo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
    private void jButton_FilePathActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton_FilePathActionPerformed
    {//GEN-HEADEREND:event_jButton_FilePathActionPerformed
 
@@ -214,10 +213,9 @@ public class GUI extends javax.swing.JFrame {
 	   }
 
    }//GEN-LAST:event_jButton_FilePathActionPerformed
-
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
 
-		GUIController.Update(Actions.List.get(jComboBox_Action.getSelectedItem()).Action,
+		GUIController.Update(Actions.List.get((String) jComboBox_Action.getSelectedItem()).Action,
 				jTextField_Target.getText(),
 				jTextField_Replace.getText(),
 				jTextField_FilePath.getText(),
@@ -228,10 +226,9 @@ public class GUI extends javax.swing.JFrame {
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
 
     }//GEN-LAST:event_jButton_DemoActionPerformed
-
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
 
-		GUIController.Update(Actions.List.get(jComboBox_Action.getSelectedItem()).Action,
+		GUIController.Update(Actions.List.get((String) jComboBox_Action.getSelectedItem()).Action,
 				jTextField_Target.getText(),
 				jTextField_Replace.getText(),
 				jTextField_FilePath.getText(),
@@ -243,13 +240,12 @@ public class GUI extends javax.swing.JFrame {
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
 
     }//GEN-LAST:event_jButton_RunActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
 
 		GUIController.batchRename.undoRename();
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_UndoActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -288,10 +284,10 @@ public class GUI extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Demo;
     private javax.swing.JButton jButton_FilePath;
     private javax.swing.JButton jButton_Run;
+    private javax.swing.JButton jButton_Undo;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox_SubFolders;
     private javax.swing.JCheckBox jCheckBox_isFiles;

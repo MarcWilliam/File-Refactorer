@@ -7,7 +7,7 @@ public class BatchRename {
 
 	public static interface IRename {
 
-		public String rename(String target, String replacement, String oldName, boolean isFile);
+		public String rename(final String target, final String replacement, final String oldName,final  boolean isFile);
 	}
 
 	protected ArrayList<CFile> CFiles;
@@ -44,7 +44,7 @@ public class BatchRename {
 		return true;
 	}
 
-	private void make(String Path) {
+	private void make(final String Path) {
 		this.CFiles = new ArrayList<>();
 		File[] listOfFiles = new File(Path).listFiles();// get an array of all files and folder in that path
 
