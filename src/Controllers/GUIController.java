@@ -7,6 +7,7 @@ package Controllers;
 
 import GUI.*;
 import Models.*;
+import javax.swing.*;
 
 /**
  *
@@ -44,9 +45,13 @@ public class GUIController {
 
 	public static void rename(java.awt.event.ActionEvent evt) {
 		GUIController.Update();
-		GUIController.batchRename.Prepair();
-		GUIController.batchRename.rename();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+		if (GUIController.batchRename.Prepair()) {
+			GUIController.batchRename.rename();
+			new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+			jButton_Undo.setEnabled(true);
+		} else {
+			JOptionPane.showMessageDialog(new JPanel(), "Could not rename file/folder", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	public static void demo(java.awt.event.ActionEvent evt) {
@@ -56,10 +61,9 @@ public class GUIController {
 	}
 
 	public static void undo(java.awt.event.ActionEvent evt) {
-
 		GUIController.batchRename.undoRename();
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
-
+		jButton_Undo.setEnabled(false);
 	}
 
 }
