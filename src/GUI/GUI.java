@@ -12,6 +12,23 @@ public class GUI extends javax.swing.JFrame {
 	 */
 	public GUI() {
 		initComponents();
+
+		GUIController.jButton_Demo = this.jButton_Demo;
+		GUIController.jButton_FilePath = this.jButton_FilePath;
+		GUIController.jButton_Run = this.jButton_Run;
+		GUIController.jButton_Undo = this.jButton_Undo;
+
+		GUIController.jCheckBox_SubFolders = this.jCheckBox_SubFolders;
+		GUIController.jCheckBox_isFiles = this.jCheckBox_isFiles;
+		GUIController.jCheckBox_isFolder = this.jCheckBox_isFolder;
+
+		GUIController.jComboBox_Action = this.jComboBox_Action;
+
+		GUIController.jTextField_FilePath = this.jTextField_FilePath;
+		GUIController.jTextField_Replace = this.jTextField_Replace;
+		GUIController.jTextField_Target = this.jTextField_Target;
+
+		GUIController.Update();
 	}
 
 	/**
@@ -21,10 +38,6 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        popupMenu1 = new java.awt.PopupMenu();
         jButton_FilePath = new javax.swing.JButton();
         jButton_Run = new javax.swing.JButton();
         jLabel_Target = new javax.swing.JLabel();
@@ -40,23 +53,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel_Action = new javax.swing.JLabel();
         jButton_Undo = new javax.swing.JButton();
         jComboBox_Action = new javax.swing.JComboBox<>();
-
-        jCheckBox1.setText("jCheckBox1");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -215,35 +211,17 @@ public class GUI extends javax.swing.JFrame {
    }//GEN-LAST:event_jButton_FilePathActionPerformed
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
 
-		GUIController.Update(Actions.List.get((String) jComboBox_Action.getSelectedItem()).Action,
-				jTextField_Target.getText(),
-				jTextField_Replace.getText(),
-				jTextField_FilePath.getText(),
-				jCheckBox_isFolder.isSelected(),
-				jCheckBox_isFiles.isSelected(),
-				jCheckBox_SubFolders.isSelected());
-		GUIController.batchRename.Prepair();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
+		GUIController.demo(evt);
 
     }//GEN-LAST:event_jButton_DemoActionPerformed
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
 
-		GUIController.Update(Actions.List.get((String) jComboBox_Action.getSelectedItem()).Action,
-				jTextField_Target.getText(),
-				jTextField_Replace.getText(),
-				jTextField_FilePath.getText(),
-				jCheckBox_isFolder.isSelected(),
-				jCheckBox_isFiles.isSelected(),
-				jCheckBox_SubFolders.isSelected());
-		GUIController.batchRename.Prepair();
-		GUIController.batchRename.rename();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+		GUIController.rename(evt);
 
     }//GEN-LAST:event_jButton_RunActionPerformed
     private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
 
-		GUIController.batchRename.undoRename();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
+		GUIController.undo(evt);
 
     }//GEN-LAST:event_jButton_UndoActionPerformed
 
@@ -282,13 +260,12 @@ public class GUI extends javax.swing.JFrame {
 			}
 		});
 	}
-
+	private GUIController guiController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Demo;
     private javax.swing.JButton jButton_FilePath;
     private javax.swing.JButton jButton_Run;
     private javax.swing.JButton jButton_Undo;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox_SubFolders;
     private javax.swing.JCheckBox jCheckBox_isFiles;
     private javax.swing.JCheckBox jCheckBox_isFolder;
@@ -297,11 +274,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_FilePath;
     private javax.swing.JLabel jLabel_Replacement;
     private javax.swing.JLabel jLabel_Target;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField_FilePath;
     private javax.swing.JTextField jTextField_Replace;
     private javax.swing.JTextField jTextField_Target;
-    private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
 }
