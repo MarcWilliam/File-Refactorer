@@ -31,16 +31,17 @@ public class BatchRename {
 	public boolean validate() {
 		return target != null
 				&& replacement != null
-				&& forDir != forSubDir
+				//&& forDir != forSubDir
 				&& new File(this.originPath).exists()
 				&& new File(this.originPath).isDirectory();
 	}
 
-	public void Prepair() {
+	public boolean Prepair() {
 		if (!this.validate()) {
-			return;
+			return false;
 		}
 		make(this.originPath);
+		return true;
 	}
 
 	private void make(String Path) {

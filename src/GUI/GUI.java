@@ -88,49 +88,19 @@ public class GUI extends javax.swing.JFrame {
 
         jCheckBox_SubFolders.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_SubFolders.setText("Sub Folders");
-        jCheckBox_SubFolders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_SubFoldersActionPerformed(evt);
-            }
-        });
 
         jCheckBox_isFiles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFiles.setSelected(true);
         jCheckBox_isFiles.setText("Files");
-        jCheckBox_isFiles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_isFilesActionPerformed(evt);
-            }
-        });
 
         jCheckBox_isFolder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFolder.setText("Folders");
-        jCheckBox_isFolder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_isFolderActionPerformed(evt);
-            }
-        });
 
         jTextField_Target.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField_Target.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_TargetActionPerformed(evt);
-            }
-        });
 
         jTextField_Replace.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField_Replace.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ReplaceActionPerformed(evt);
-            }
-        });
 
         jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField_FilePath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_FilePathActionPerformed(evt);
-            }
-        });
 
         jButton_Demo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Demo.setText("Demo");
@@ -153,11 +123,6 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.keySet().toArray()));
-        jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_ActionActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,53 +210,20 @@ public class GUI extends javax.swing.JFrame {
 			   JOptionPane.showMessageDialog(null, "can't load the path", "Error", JOptionPane.ERROR_MESSAGE);
 		   } else {
 			   jTextField_FilePath.setText(browse.getSelectedFile().toString());
-			   GUIController.batchRename.originPath = jTextField_FilePath.getText();
 		   }
 	   }
 
    }//GEN-LAST:event_jButton_FilePathActionPerformed
 
-    private void jCheckBox_SubFoldersActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jCheckBox_SubFoldersActionPerformed
-    {//GEN-HEADEREND:event_jCheckBox_SubFoldersActionPerformed
-
-		GUIController.batchRename.forSubDir = jCheckBox_SubFolders.isSelected();
-
-    }//GEN-LAST:event_jCheckBox_SubFoldersActionPerformed
-
-    private void jCheckBox_isFilesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jCheckBox_isFilesActionPerformed
-    {//GEN-HEADEREND:event_jCheckBox_isFilesActionPerformed
-
-		GUIController.batchRename.forFile = jCheckBox_isFiles.isSelected();
-
-    }//GEN-LAST:event_jCheckBox_isFilesActionPerformed
-
-    private void jCheckBox_isFolderActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jCheckBox_isFolderActionPerformed
-    {//GEN-HEADEREND:event_jCheckBox_isFolderActionPerformed
-
-		GUIController.batchRename.forDir = jCheckBox_isFolder.isSelected();
-
-    }//GEN-LAST:event_jCheckBox_isFolderActionPerformed
-
-    private void jTextField_ReplaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ReplaceActionPerformed
-
-		GUIController.batchRename.replacement = jTextField_Replace.getText();
-
-    }//GEN-LAST:event_jTextField_ReplaceActionPerformed
-
-    private void jTextField_TargetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TargetActionPerformed
-
-		GUIController.batchRename.target = jTextField_Target.getText();
-
-    }//GEN-LAST:event_jTextField_TargetActionPerformed
-
-    private void jTextField_FilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_FilePathActionPerformed
-
-		GUIController.batchRename.originPath = jTextField_FilePath.getText();
-
-    }//GEN-LAST:event_jTextField_FilePathActionPerformed
-
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
 
+		GUIController.Update(Actions.List.get(jComboBox_Action.getSelectedItem()).Action,
+				jTextField_Target.getText(),
+				jTextField_Replace.getText(),
+				jTextField_FilePath.getText(),
+				jCheckBox_isFolder.isSelected(),
+				jCheckBox_isFiles.isSelected(),
+				jCheckBox_SubFolders.isSelected());
 		GUIController.batchRename.Prepair();
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
 
@@ -299,6 +231,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
 
+		GUIController.Update(Actions.List.get(jComboBox_Action.getSelectedItem()).Action,
+				jTextField_Target.getText(),
+				jTextField_Replace.getText(),
+				jTextField_FilePath.getText(),
+				jCheckBox_isFolder.isSelected(),
+				jCheckBox_isFiles.isSelected(),
+				jCheckBox_SubFolders.isSelected());
+		GUIController.batchRename.Prepair();
 		GUIController.batchRename.rename();
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
 
@@ -310,13 +250,6 @@ public class GUI extends javax.swing.JFrame {
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
-
-		System.out.println(jComboBox_Action.getSelectedItem());
-		GUIController.batchRename.Action = Actions.List.get(jComboBox_Action.getSelectedItem()).Action;
-
-    }//GEN-LAST:event_jComboBox_ActionActionPerformed
 
 	/**
 	 * @param args the command line arguments

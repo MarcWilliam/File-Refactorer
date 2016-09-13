@@ -16,7 +16,7 @@ public class GUIController {
 
 	public static BatchRename batchRename = new BatchRename();
 
-	public static void Demo(IRename Action, String target, String replacement, String originPath, boolean forFile, boolean forDir, boolean forSubDir) {
+	public static void Update(IRename Action, String target, String replacement, String originPath, boolean forFile, boolean forDir, boolean forSubDir) {
 		batchRename.setAll(Action, target, replacement, originPath, true, true, true);
 	}
 
