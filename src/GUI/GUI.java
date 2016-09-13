@@ -71,7 +71,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton_Run.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icon/Save-as.png"))); // NOI18N
+        jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Save-as.png"))); // NOI18N
         jButton_Run.setToolTipText("Save");
         jButton_Run.setBorderPainted(false);
         jButton_Run.setContentAreaFilled(false);
@@ -107,7 +107,7 @@ public class GUI extends javax.swing.JFrame {
         jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton_Demo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Demo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icon/Start.png"))); // NOI18N
+        jButton_Demo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Start.png"))); // NOI18N
         jButton_Demo.setToolTipText("Demo");
         jButton_Demo.setBorderPainted(false);
         jButton_Demo.setContentAreaFilled(false);
@@ -121,7 +121,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel_Action.setText("Action");
 
         jButton_Undo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Undo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icon/Undo.png"))); // NOI18N
+        jButton_Undo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Undo.png"))); // NOI18N
         jButton_Undo.setToolTipText("Undo");
         jButton_Undo.setBorderPainted(false);
         jButton_Undo.setContentAreaFilled(false);
