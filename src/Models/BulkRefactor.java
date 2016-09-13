@@ -3,11 +3,11 @@ package Models;
 import java.io.*;
 import java.util.*;
 
-public class BatchRename {
+public class BulkRefactor {
 
 	public static interface IRename {
 
-		public String rename(final String target, final String replacement, final String oldName,final  boolean isFile);
+		public String rename(final String target, final String replacement, final File oldFile);
 	}
 
 	protected ArrayList<CFile> CFiles;
@@ -50,10 +50,10 @@ public class BatchRename {
 
 		for (File tempFile : listOfFiles) {
 			if (tempFile.isFile() && forFile) {
-				this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile.getName(), tempFile.isFile()), tempFile));
+				this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile), tempFile));
 			} else if (tempFile.isDirectory()) {
 				if (forDir) {
-					this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile.getName(), tempFile.isFile()), tempFile));
+					this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile), tempFile));
 				} else if (forSubDir) {
 					// recurgent here
 				}

@@ -6,7 +6,7 @@
 package Controllers;
 
 import Models.*;
-import Models.BatchRename.IRename;
+import Models.BulkRefactor.IRename;
 
 /**
  *
@@ -14,10 +14,10 @@ import Models.BatchRename.IRename;
  */
 public class GUIController {
 
-	public static BatchRename batchRename = new BatchRename();
+	public static BulkRefactor batchRename = new BulkRefactor();
 
 	public static void Update(IRename Action, String target, String replacement, String originPath, boolean forFile, boolean forDir, boolean forSubDir) {
-		batchRename.setAll(Action, target, replacement, originPath, true, true, true);
+		batchRename.setAll(Action, target, replacement, originPath, forFile, forDir, forSubDir);
 	}
 
 }
