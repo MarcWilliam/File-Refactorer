@@ -17,14 +17,14 @@ public class Actions {
 	private Actions() {
 	}
 
-	public static HashMap<String, Actions.Action> List = new HashMap<>();
+	public static ArrayList< Actions.Action> List = new ArrayList<>();
 
 	private static void addAction(String Name, String Description, BulkRefactor.IRename Action) {
-		Actions.List.put(Name, new Action(Name, Description, "Target", "Replacement", Action));
+		Actions.List.add(new Action(Name, Description, "Target", "Replacement", Action));
 	}
 
 	private static void addAction(String Name, String Description, String Param1Name, String Param2Name, BulkRefactor.IRename Action) {
-		Actions.List.put(Name, new Action(Name, Description, Param1Name, Param2Name, Action));
+		Actions.List.add(new Action(Name, Description, Param1Name, Param2Name, Action));
 	}
 
 	public static class Action {
@@ -41,6 +41,11 @@ public class Actions {
 			this.Param1Name = Param1Name;
 			this.Param2Name = Param2Name;
 			this.Action = Action;
+		}
+
+		@Override
+		public String toString() {
+			return Name + "  :  " + Description;
 		}
 
 	}

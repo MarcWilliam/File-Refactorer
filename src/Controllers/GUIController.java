@@ -21,7 +21,7 @@ public class GUIController {
 
 	public static void Update() {
 		batchRename = new BulkRefactor(
-				Actions.List.get((String) window.jComboBox_Action.getSelectedItem()).Action,
+				Actions.List.get(window.jComboBox_Action.getSelectedIndex()).Action,
 				window.jTextField_Target.getText(),
 				window.jTextField_Replace.getText(),
 				window.jTextField_FilePath.getText(),
@@ -32,7 +32,7 @@ public class GUIController {
 	}
 
 	public static void ActionChanged(java.awt.event.ActionEvent evt) {
-		Actions.Action tempAct = Actions.List.get((String) window.jComboBox_Action.getSelectedItem());
+		Actions.Action tempAct = Actions.List.get(window.jComboBox_Action.getSelectedIndex());
 
 		boolean par1 = tempAct.Param1Name != null,
 				par2 = tempAct.Param2Name != null;

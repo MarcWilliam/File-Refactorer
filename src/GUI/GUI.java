@@ -32,7 +32,6 @@ public class GUI extends javax.swing.JFrame {
         setForeground(java.awt.Color.white);
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
         setMinimumSize(new java.awt.Dimension(550, 240));
-        setPreferredSize(new java.awt.Dimension(750, 220));
 
         jButton_FilePath.setText("Load");
         jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.keySet().toArray()));
+        jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.toArray()));
         jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_ActionActionPerformed(evt);
