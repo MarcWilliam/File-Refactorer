@@ -104,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.toArray()));
+        jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List));
         jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_ActionActionPerformed(evt);

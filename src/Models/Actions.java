@@ -6,7 +6,6 @@
 package Models;
 
 import java.io.*;
-import java.util.*;
 
 /**
  *
@@ -15,16 +14,6 @@ import java.util.*;
 public class Actions {
 
 	private Actions() {
-	}
-
-	public static ArrayList< Actions.Action> List = new ArrayList<>();
-
-	private static void addAction(String Name, String Description, BulkRefactor.IRename Action) {
-		Actions.List.add(new Action(Name, Description, "Target", "Replacement", Action));
-	}
-
-	private static void addAction(String Name, String Description, String Param1Name, String Param2Name, BulkRefactor.IRename Action) {
-		Actions.List.add(new Action(Name, Description, Param1Name, Param2Name, Action));
 	}
 
 	public static class Action {
@@ -72,35 +61,30 @@ public class Actions {
 			return ret;
 		}
 	}
-
-	static {
+	public static Actions.Action[] List = {
 		/**
 		 * ******************************************************************************* *
 		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
 		 */
+		new Action("Replace", "replace all ocucence of that string", "Target", "Replacement",
+		(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
+			IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
+			return tmp.name.replace(param1, param2) + tmp.extension;
+		}),
+		new Action("Regex", "replace all ocucence of that string using regex", "Target", "Replacement",
+		(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
+			IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
+			return tmp.name.replaceAll(param1, param2) + tmp.extension;
+		}),
+		new Action("Append", "Append a sting to the file", "Append", null,
+		(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
+			IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
+			return tmp.name + param2 + tmp.extension;
+		})
 
-		addAction("Replace", "replace all ocucence of that string", "Target", "Replacement",
-				(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
-					IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
-					return tmp.name.replace(param1, param2) + tmp.extension;
-				});
-
-		addAction("Regex", "replace all ocucence of that string using regex", "Target", "Replacement",
-				(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
-					IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
-					return tmp.name.replaceAll(param1, param2) + tmp.extension;
-				});
-
-		addAction("Append", "Append a sting to the file", "Append", null,
-				(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
-					IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
-					return tmp.name + param2 + tmp.extension;
-				});
-
-		/**
-		 * ******************************************************************************* *
-		 * * * * * * * * * * * * * * * End of Custom Actions * * * * * * * * * * * * * * * *
-		 */
-	}
-
+	/**
+	 * ******************************************************************************* *
+	 * * * * * * * * * * * * * * * End of Custom Actions * * * * * * * * * * * * * * * *
+	 */
+	};
 }
