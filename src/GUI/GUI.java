@@ -22,7 +22,7 @@ public class GUI extends javax.swing.JFrame {
 		GUIController.jCheckBox_SubFolders = this.jCheckBox_SubFolders;
 		GUIController.jCheckBox_isFiles = this.jCheckBox_isFiles;
 		GUIController.jCheckBox_isFolder = this.jCheckBox_isFolder;
-
+		GUIController.jCheckBox_IgnoreExtension = this.jCheckBox_IgnoreExtension;
 		GUIController.jComboBox_Action = this.jComboBox_Action;
 
 		GUIController.jTextField_FilePath = this.jTextField_FilePath;
@@ -55,13 +55,13 @@ public class GUI extends javax.swing.JFrame {
         jLabel_Action = new javax.swing.JLabel();
         jButton_Undo = new javax.swing.JButton();
         jComboBox_Action = new javax.swing.JComboBox<>();
+        jCheckBox_IgnoreExtension = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(java.awt.Color.white);
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
         setMinimumSize(new java.awt.Dimension(550, 200));
-        setPreferredSize(new java.awt.Dimension(750, 220));
 
         jButton_FilePath.setText("Load");
         jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +136,10 @@ public class GUI extends javax.swing.JFrame {
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.keySet().toArray()));
 
+        jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox_IgnoreExtension.setSelected(true);
+        jCheckBox_IgnoreExtension.setText("Ignore Extension");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,17 +163,24 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jTextField_Replace)
                             .addComponent(jComboBox_Action, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox_SubFolders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(97, 97, 97)
                         .addComponent(jCheckBox_isFolder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox_isFiles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
-                        .addComponent(jButton_Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Run, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton_Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_Run, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCheckBox_isFiles)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox_IgnoreExtension)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox_SubFolders)
+                                .addGap(0, 230, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -198,8 +209,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox_SubFolders)
                             .addComponent(jCheckBox_isFolder)
-                            .addComponent(jCheckBox_isFiles))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jCheckBox_isFiles)
+                            .addComponent(jCheckBox_IgnoreExtension))
+                        .addGap(0, 44, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -281,12 +293,12 @@ public class GUI extends javax.swing.JFrame {
 			}
 		});
 	}
-	private GUIController guiController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Demo;
     private javax.swing.JButton jButton_FilePath;
     private javax.swing.JButton jButton_Run;
     private javax.swing.JButton jButton_Undo;
+    private javax.swing.JCheckBox jCheckBox_IgnoreExtension;
     private javax.swing.JCheckBox jCheckBox_SubFolders;
     private javax.swing.JCheckBox jCheckBox_isFiles;
     private javax.swing.JCheckBox jCheckBox_isFolder;

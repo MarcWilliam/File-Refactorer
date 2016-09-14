@@ -7,18 +7,23 @@ public class BulkRefactor {
 
 	public static interface IRename {
 
-		public String rename(final String target, final String replacement, final File oldFile);
+		public String rename(final String target, final String replacement, final File oldFile, final boolean ignoreExtension);
 	}
 
 	protected ArrayList<CFile> CFiles;
 
-	public boolean forFile = true, forDir = false, forSubDir = false;
+	public boolean forFile = true,
+			forDir = false,
+			forSubDir = false,
+			ignoreExtension = true;
 
-	public String target = null, replacement = null, originPath = null;
+	public String target = null,
+			replacement = null,
+			originPath = null;
 
 	public IRename Action = null;
 
-	public void setAll(IRename Action, String target, String replacement, String originPath, boolean forFile, boolean forDir, boolean forSubDir) {
+	public void setAll(IRename Action, String target, String replacement, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension) {
 		this.Action = Action;
 		this.target = target;
 		this.replacement = replacement;
@@ -50,10 +55,10 @@ public class BulkRefactor {
 
 		for (File tempFile : listOfFiles) {
 			if (tempFile.isFile() && forFile) {
-				this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile), tempFile));
+				this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile, this.ignoreExtension), tempFile));
 			} else if (tempFile.isDirectory()) {
 				if (forDir) {
-					this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile), tempFile));
+					this.CFiles.add(new CFile(Path, this.Action.rename(this.target, this.replacement, tempFile, this.ignoreExtension), tempFile));
 				} else if (forSubDir) {
 					// recurgent here
 				}

@@ -23,12 +23,18 @@ public class GUIController {
 	public static javax.swing.JCheckBox jCheckBox_SubFolders;
 	public static javax.swing.JCheckBox jCheckBox_isFiles;
 	public static javax.swing.JCheckBox jCheckBox_isFolder;
+	public static javax.swing.JCheckBox jCheckBox_IgnoreExtension;
 
 	public static javax.swing.JComboBox<String> jComboBox_Action;
 
 	public static javax.swing.JTextField jTextField_FilePath;
 	public static javax.swing.JTextField jTextField_Replace;
 	public static javax.swing.JTextField jTextField_Target;
+
+	public static javax.swing.JLabel jLabel_Action;
+	public static javax.swing.JLabel jLabel_FilePath;
+	public static javax.swing.JLabel jLabel_Replacement;
+	public static javax.swing.JLabel jLabel_Target;
 
 	public static BulkRefactor batchRename = new BulkRefactor();
 
@@ -40,7 +46,8 @@ public class GUIController {
 				jTextField_FilePath.getText(),
 				jCheckBox_isFiles.isSelected(),
 				jCheckBox_isFolder.isSelected(),
-				jCheckBox_SubFolders.isSelected());
+				jCheckBox_SubFolders.isSelected(),
+				jCheckBox_IgnoreExtension.isSelected());
 	}
 
 	public static void rename(java.awt.event.ActionEvent evt) {
