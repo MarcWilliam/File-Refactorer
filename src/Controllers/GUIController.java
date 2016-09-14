@@ -17,10 +17,10 @@ public class GUIController {
 
 	public static GUI window;
 
-	public static BulkRefactor batchRename = new BulkRefactor();
+	public static BulkRefactor batchRename;
 
 	public static void Update() {
-		batchRename.setAll(
+		batchRename = new BulkRefactor(
 				Actions.List.get((String) window.jComboBox_Action.getSelectedItem()).Action,
 				window.jTextField_Target.getText(),
 				window.jTextField_Replace.getText(),

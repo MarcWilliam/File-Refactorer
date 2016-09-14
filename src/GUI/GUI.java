@@ -16,6 +16,7 @@ public class GUI extends javax.swing.JFrame {
 
 		GUIController.window = this;
 		GUIController.Update();
+		GUIController.ActionChanged(null);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -30,7 +31,8 @@ public class GUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(java.awt.Color.white);
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
-        setMinimumSize(new java.awt.Dimension(550, 200));
+        setMinimumSize(new java.awt.Dimension(550, 240));
+        setPreferredSize(new java.awt.Dimension(750, 220));
 
         jButton_FilePath.setText("Load");
         jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {

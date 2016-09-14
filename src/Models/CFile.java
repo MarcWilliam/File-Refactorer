@@ -14,11 +14,17 @@ import java.io.*;
  */
 public class CFile implements GUItabelList.ITable {
 
-	public String Path;
-	public String oldName;
-	public String newName;
+	public String Path,
+			oldName,
+			newName;
 	public File file;
 
+	/**
+	 *
+	 * @param Path the main directory Path
+	 * @param newName the new file name
+	 * @param file
+	 */
 	public CFile(String Path, String newName, File file) {
 		this.Path = Path;
 		this.oldName = file.getName();
@@ -55,7 +61,7 @@ public class CFile implements GUItabelList.ITable {
 	public boolean undoRename() {
 		File NewFile = new File(this.Path + "\\" + this.oldName);
 
-		if (NewFile.exists()) {//|| this.file.getName().equals(this.oldName) || this.oldName.equals(this.newName)) {
+		if (NewFile.exists()) {
 			return false;
 		} else {
 			if (this.file.renameTo(NewFile)) {
