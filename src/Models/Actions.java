@@ -39,6 +39,8 @@ public class Actions {
 		public Action(String Name, String Description, String Param1Name, String Param2Name, BulkRefactor.IRename Action) {
 			this.Name = Name;
 			this.Description = Description;
+			this.Param1Name = Param1Name;
+			this.Param2Name = Param2Name;
 			this.Action = Action;
 		}
 
@@ -72,6 +74,7 @@ public class Actions {
 		 * ******************************************************************************* *
 		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
 		 */
+
 		addAction("Replace", "replace all ocucence of that string",
 				(BulkRefactor.IRename) (final String target, final String replacement, final File oldFile, final boolean ignoreExtension) -> {
 					IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
@@ -84,7 +87,7 @@ public class Actions {
 					return tmp.name.replaceAll(target, replacement) + tmp.extension;
 				});
 
-		addAction("Append (don't use target)", "Append a sting to the file",
+		addAction("Append", "Append a sting to the file", "Append", null,
 				(BulkRefactor.IRename) (final String target, final String replacement, final File oldFile, final boolean ignoreExtension) -> {
 					IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
 					return tmp.name + replacement + tmp.extension;

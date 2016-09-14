@@ -14,21 +14,7 @@ public class GUI extends javax.swing.JFrame {
 	public GUI() {
 		initComponents();
 
-		GUIController.jButton_Demo = this.jButton_Demo;
-		GUIController.jButton_FilePath = this.jButton_FilePath;
-		GUIController.jButton_Run = this.jButton_Run;
-		GUIController.jButton_Undo = this.jButton_Undo;
-
-		GUIController.jCheckBox_SubFolders = this.jCheckBox_SubFolders;
-		GUIController.jCheckBox_isFiles = this.jCheckBox_isFiles;
-		GUIController.jCheckBox_isFolder = this.jCheckBox_isFolder;
-		GUIController.jCheckBox_IgnoreExtension = this.jCheckBox_IgnoreExtension;
-		GUIController.jComboBox_Action = this.jComboBox_Action;
-
-		GUIController.jTextField_FilePath = this.jTextField_FilePath;
-		GUIController.jTextField_Replace = this.jTextField_Replace;
-		GUIController.jTextField_Target = this.jTextField_Target;
-
+		GUIController.window = this;
 		GUIController.Update();
 		this.setLocationRelativeTo(null);
 	}
@@ -39,23 +25,6 @@ public class GUI extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        jButton_FilePath = new javax.swing.JButton();
-        jButton_Run = new javax.swing.JButton();
-        jLabel_Target = new javax.swing.JLabel();
-        jLabel_Replacement = new javax.swing.JLabel();
-        jLabel_FilePath = new javax.swing.JLabel();
-        jCheckBox_SubFolders = new javax.swing.JCheckBox();
-        jCheckBox_isFiles = new javax.swing.JCheckBox();
-        jCheckBox_isFolder = new javax.swing.JCheckBox();
-        jTextField_Target = new javax.swing.JTextField();
-        jTextField_Replace = new javax.swing.JTextField();
-        jTextField_FilePath = new javax.swing.JTextField();
-        jButton_Demo = new javax.swing.JButton();
-        jLabel_Action = new javax.swing.JLabel();
-        jButton_Undo = new javax.swing.JButton();
-        jComboBox_Action = new javax.swing.JComboBox<>();
-        jCheckBox_IgnoreExtension = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -135,6 +104,11 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List.keySet().toArray()));
+        jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_ActionActionPerformed(evt);
+            }
+        });
 
         jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_IgnoreExtension.setSelected(true);
@@ -211,7 +185,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jCheckBox_isFolder)
                             .addComponent(jCheckBox_isFiles)
                             .addComponent(jCheckBox_IgnoreExtension))
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addGap(0, 45, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -258,6 +232,12 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_UndoActionPerformed
 
+    private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
+
+		GUIController.ActionChanged(evt);
+
+    }//GEN-LAST:event_jComboBox_ActionActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -294,21 +274,21 @@ public class GUI extends javax.swing.JFrame {
 		});
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Demo;
-    private javax.swing.JButton jButton_FilePath;
-    private javax.swing.JButton jButton_Run;
-    private javax.swing.JButton jButton_Undo;
-    private javax.swing.JCheckBox jCheckBox_IgnoreExtension;
-    private javax.swing.JCheckBox jCheckBox_SubFolders;
-    private javax.swing.JCheckBox jCheckBox_isFiles;
-    private javax.swing.JCheckBox jCheckBox_isFolder;
-    private javax.swing.JComboBox<String> jComboBox_Action;
-    private javax.swing.JLabel jLabel_Action;
-    private javax.swing.JLabel jLabel_FilePath;
-    private javax.swing.JLabel jLabel_Replacement;
-    private javax.swing.JLabel jLabel_Target;
-    private javax.swing.JTextField jTextField_FilePath;
-    private javax.swing.JTextField jTextField_Replace;
-    private javax.swing.JTextField jTextField_Target;
+    public final javax.swing.JButton jButton_Demo = new javax.swing.JButton();
+    public final javax.swing.JButton jButton_FilePath = new javax.swing.JButton();
+    public final javax.swing.JButton jButton_Run = new javax.swing.JButton();
+    public final javax.swing.JButton jButton_Undo = new javax.swing.JButton();
+    public final javax.swing.JCheckBox jCheckBox_IgnoreExtension = new javax.swing.JCheckBox();
+    public final javax.swing.JCheckBox jCheckBox_SubFolders = new javax.swing.JCheckBox();
+    public final javax.swing.JCheckBox jCheckBox_isFiles = new javax.swing.JCheckBox();
+    public final javax.swing.JCheckBox jCheckBox_isFolder = new javax.swing.JCheckBox();
+    public final javax.swing.JComboBox<String> jComboBox_Action = new javax.swing.JComboBox<>();
+    public final javax.swing.JLabel jLabel_Action = new javax.swing.JLabel();
+    public final javax.swing.JLabel jLabel_FilePath = new javax.swing.JLabel();
+    public final javax.swing.JLabel jLabel_Replacement = new javax.swing.JLabel();
+    public final javax.swing.JLabel jLabel_Target = new javax.swing.JLabel();
+    public final javax.swing.JTextField jTextField_FilePath = new javax.swing.JTextField();
+    public final javax.swing.JTextField jTextField_Replace = new javax.swing.JTextField();
+    public final javax.swing.JTextField jTextField_Target = new javax.swing.JTextField();
     // End of variables declaration//GEN-END:variables
 }

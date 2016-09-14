@@ -15,39 +15,39 @@ import javax.swing.*;
  */
 public class GUIController {
 
-	public static javax.swing.JButton jButton_Demo;
-	public static javax.swing.JButton jButton_FilePath;
-	public static javax.swing.JButton jButton_Run;
-	public static javax.swing.JButton jButton_Undo;
-
-	public static javax.swing.JCheckBox jCheckBox_SubFolders;
-	public static javax.swing.JCheckBox jCheckBox_isFiles;
-	public static javax.swing.JCheckBox jCheckBox_isFolder;
-	public static javax.swing.JCheckBox jCheckBox_IgnoreExtension;
-
-	public static javax.swing.JComboBox<String> jComboBox_Action;
-
-	public static javax.swing.JTextField jTextField_FilePath;
-	public static javax.swing.JTextField jTextField_Replace;
-	public static javax.swing.JTextField jTextField_Target;
-
-	public static javax.swing.JLabel jLabel_Action;
-	public static javax.swing.JLabel jLabel_FilePath;
-	public static javax.swing.JLabel jLabel_Replacement;
-	public static javax.swing.JLabel jLabel_Target;
+	public static GUI window;
 
 	public static BulkRefactor batchRename = new BulkRefactor();
 
 	public static void Update() {
 		batchRename.setAll(
-				Actions.List.get((String) jComboBox_Action.getSelectedItem()).Action,
-				jTextField_Target.getText(),
-				jTextField_Replace.getText(),
-				jTextField_FilePath.getText(),
-				jCheckBox_isFiles.isSelected(),
-				jCheckBox_isFolder.isSelected(),
-				jCheckBox_SubFolders.isSelected(),
-				jCheckBox_IgnoreExtension.isSelected());
+				Actions.List.get((String) window.jComboBox_Action.getSelectedItem()).Action,
+				window.jTextField_Target.getText(),
+				window.jTextField_Replace.getText(),
+				window.jTextField_FilePath.getText(),
+				window.jCheckBox_isFiles.isSelected(),
+				window.jCheckBox_isFolder.isSelected(),
+				window.jCheckBox_SubFolders.isSelected(),
+				window.jCheckBox_IgnoreExtension.isSelected());
+	}
+
+	public static void ActionChanged(java.awt.event.ActionEvent evt) {
+		Actions.Action tempAct = Actions.List.get((String) window.jComboBox_Action.getSelectedItem());
+
+		boolean par1 = tempAct.Param1Name != null,
+				par2 = tempAct.Param2Name != null;
+
+		if (par1) {
+			window.jLabel_Target.setText(tempAct.Param1Name);
+		}
+		if (par2) {
+			window.jLabel_Replacement.setText(tempAct.Param2Name);
+		}
+
+		window.jLabel_Target.setVisible(par1);
+		window.jTextField_Target.setVisible(par1);
+		window.jLabel_Replacement.setVisible(par2);
+		window.jTextField_Replace.setVisible(par2);
 	}
 
 	public static void rename(java.awt.event.ActionEvent evt) {
@@ -55,7 +55,7 @@ public class GUIController {
 		if (GUIController.batchRename.Prepair()) {
 			GUIController.batchRename.rename();
 			new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
-			jButton_Undo.setEnabled(true);
+			window.jButton_Undo.setEnabled(true);
 		} else {
 			JOptionPane.showMessageDialog(new JPanel(), "Could not rename file/folder", "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -70,7 +70,7 @@ public class GUIController {
 	public static void undo(java.awt.event.ActionEvent evt) {
 		GUIController.batchRename.undoRename();
 		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
-		jButton_Undo.setEnabled(false);
+		window.jButton_Undo.setEnabled(false);
 	}
 
 }
