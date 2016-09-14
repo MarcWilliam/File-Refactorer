@@ -200,7 +200,6 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    private void jButton_FilePathActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton_FilePathActionPerformed
    {//GEN-HEADEREND:event_jButton_FilePathActionPerformed
-
 	   JFileChooser browse = new JFileChooser();
 	   browse.setDialogTitle("Browse");
 	   browse.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -215,28 +214,18 @@ public class GUI extends javax.swing.JFrame {
 			   jTextField_FilePath.setText(browse.getSelectedFile().toString());
 		   }
 	   }
-
    }//GEN-LAST:event_jButton_FilePathActionPerformed
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
-
 		GUIController.demo(evt);
-
     }//GEN-LAST:event_jButton_DemoActionPerformed
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
-
 		GUIController.rename(evt);
-
     }//GEN-LAST:event_jButton_RunActionPerformed
     private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
-
 		GUIController.undo(evt);
-
     }//GEN-LAST:event_jButton_UndoActionPerformed
-
     private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
-
 		GUIController.ActionChanged(evt);
-
     }//GEN-LAST:event_jComboBox_ActionActionPerformed
 
 	/**

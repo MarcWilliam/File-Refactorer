@@ -86,7 +86,7 @@ public class BulkRefactor {
 				if (forDir) {
 					this.CFiles.add(new CFile(Path, this.Action.rename(this.param1, this.param2, tempFile, this.ignoreExtension), tempFile));
 				} else if (forSubDir) {
-					// recurgent here
+					make(Path + "\\" + tempFile.getName());
 				}
 			}
 		}

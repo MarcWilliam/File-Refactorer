@@ -66,6 +66,11 @@ public class Actions {
 		 * ******************************************************************************* *
 		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
 		 */
+		new Action("Remove", "remove all ocucence of that string", "Target", null,
+		(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
+			IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
+			return tmp.name.replace(param1, "") + tmp.extension;
+		}),
 		new Action("Replace", "replace all ocucence of that string", "Target", "Replacement",
 		(BulkRefactor.IRename) (final String param1, final String param2, final File oldFile, final boolean ignoreExtension) -> {
 			IgnoreExt tmp = IgnoreExt.Find(oldFile, ignoreExtension);
