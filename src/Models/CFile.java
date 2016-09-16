@@ -75,7 +75,7 @@ public class CFile implements GUItabelList.ITable {
 	@Override
 	public String[] getCells() {
 		return new String[]{
-			this.file.isFile() ? "File" : "Folder",
+			(this.newName.equals(this.oldName) ? "  " : "* ") + (this.file.isFile() ? "File" : "Folder"),
 			this.oldName,
 			this.newName};
 	}

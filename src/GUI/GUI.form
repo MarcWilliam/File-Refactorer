@@ -319,7 +319,7 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new DefaultComboBoxModel(Actions.List)" type="code"/>
+          <Connection code="new DefaultComboBoxModel(Models.CAction.List)" type="code"/>
         </Property>
       </Properties>
       <Events>

@@ -15,13 +15,18 @@ import javax.swing.*;
  */
 public class GUIController {
 
-	public static GUI window;
+	public final GUI window;
+	public BulkRefactor batchRename;
 
-	public static BulkRefactor batchRename;
+	public GUIController(GUI window) {
+		this.window = window;
+		this.ActionChanged(null);
+		this.Update();
+	}
 
-	public static void Update() {
+	public final void Update() {
 		batchRename = new BulkRefactor(
-				Actions.List[window.jComboBox_Action.getSelectedIndex()].Action,
+				CAction.List[window.jComboBox_Action.getSelectedIndex()].Action,
 				window.jTextField_Target.getText(),
 				window.jTextField_Replace.getText(),
 				window.jTextField_FilePath.getText(),
@@ -31,8 +36,8 @@ public class GUIController {
 				window.jCheckBox_IgnoreExtension.isSelected());
 	}
 
-	public static void ActionChanged(java.awt.event.ActionEvent evt) {
-		Actions.Action tempAct = Actions.List[window.jComboBox_Action.getSelectedIndex()];
+	public final void ActionChanged(java.awt.event.ActionEvent evt) {
+		CAction tempAct = CAction.List[window.jComboBox_Action.getSelectedIndex()];
 
 		boolean par1 = tempAct.Param1Name != null,
 				par2 = tempAct.Param2Name != null;
@@ -50,26 +55,26 @@ public class GUIController {
 		window.jTextField_Replace.setVisible(par2);
 	}
 
-	public static void rename(java.awt.event.ActionEvent evt) {
-		GUIController.Update();
-		if (GUIController.batchRename.Prepair()) {
-			GUIController.batchRename.rename();
-			new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+	public final void rename(java.awt.event.ActionEvent evt) {
+		this.Update();
+		if (this.batchRename.Prepair()) {
+			this.batchRename.rename();
+			new GUItabelList(this.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
 			window.jButton_Undo.setEnabled(true);
 		} else {
 			JOptionPane.showMessageDialog(new JPanel(), "Could not rename file/folder", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
-	public static void demo(java.awt.event.ActionEvent evt) {
-		GUIController.Update();
-		GUIController.batchRename.Prepair();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
+	public final void demo(java.awt.event.ActionEvent evt) {
+		this.Update();
+		this.batchRename.Prepair();
+		new GUItabelList(this.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
 	}
 
-	public static void undo(java.awt.event.ActionEvent evt) {
-		GUIController.batchRename.undoRename();
-		new GUItabelList(GUIController.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
+	public final void undo(java.awt.event.ActionEvent evt) {
+		this.batchRename.undoRename();
+		new GUItabelList(this.batchRename.getCFiles(), new CFile(), "undo rename").setVisible(true);
 		window.jButton_Undo.setEnabled(false);
 	}
 

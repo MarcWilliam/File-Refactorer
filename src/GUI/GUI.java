@@ -1,7 +1,6 @@
 package GUI;
 
 import Controllers.*;
-import Models.*;
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
@@ -13,11 +12,8 @@ public class GUI extends javax.swing.JFrame {
 	 */
 	public GUI() {
 		initComponents();
-
-		GUIController.window = this;
-		GUIController.Update();
-		GUIController.ActionChanged(null);
 		this.setLocationRelativeTo(null);
+		this.cController = new GUIController(this);
 	}
 
 	/**
@@ -104,7 +100,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox_Action.setModel(new DefaultComboBoxModel(Actions.List));
+        jComboBox_Action.setModel(new DefaultComboBoxModel(Models.CAction.List));
         jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_ActionActionPerformed(evt);
@@ -216,16 +212,16 @@ public class GUI extends javax.swing.JFrame {
 	   }
    }//GEN-LAST:event_jButton_FilePathActionPerformed
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
-		GUIController.demo(evt);
+		this.cController.demo(evt);
     }//GEN-LAST:event_jButton_DemoActionPerformed
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
-		GUIController.rename(evt);
+		this.cController.rename(evt);
     }//GEN-LAST:event_jButton_RunActionPerformed
     private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
-		GUIController.undo(evt);
+		this.cController.undo(evt);
     }//GEN-LAST:event_jButton_UndoActionPerformed
     private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
-		GUIController.ActionChanged(evt);
+		this.cController.ActionChanged(evt);
     }//GEN-LAST:event_jComboBox_ActionActionPerformed
 
 	/**
@@ -263,6 +259,7 @@ public class GUI extends javax.swing.JFrame {
 			}
 		});
 	}
+	public final GUIController cController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public final javax.swing.JButton jButton_Demo = new javax.swing.JButton();
     public final javax.swing.JButton jButton_FilePath = new javax.swing.JButton();

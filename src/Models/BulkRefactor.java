@@ -42,6 +42,7 @@ public class BulkRefactor {
 		this.forFile = forFile;
 		this.forDir = forDir;
 		this.forSubDir = forSubDir;
+		this.ignoreExtension = ignoreExtension;
 	}
 
 	/**
@@ -66,6 +67,7 @@ public class BulkRefactor {
 		if (!this.validate()) {
 			return false;
 		}
+		this.CFiles = new ArrayList<>();
 		make(this.originPath);
 		return true;
 	}
@@ -76,7 +78,6 @@ public class BulkRefactor {
 	 * @param Path used for recursion to loop all sub directory
 	 */
 	private void make(final String Path) {
-		this.CFiles = new ArrayList<>();
 		File[] listOfFiles = new File(Path).listFiles();// get an array of all files and folder in that path
 
 		for (File tempFile : listOfFiles) {
