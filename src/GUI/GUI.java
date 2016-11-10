@@ -24,10 +24,13 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bulk File Refactor");
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(java.awt.Color.white);
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(550, 240));
+        setName("main"); // NOI18N
 
         jButton_FilePath.setText("Load");
         jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +194,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jButton_Undo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
+
+        getAccessibleContext().setAccessibleDescription("an easy way to rename alot of files and folder at once");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
