@@ -16,32 +16,38 @@ public class CFile implements GUItabelList.ITable {
 
 	public String Path,
 			oldName,
-			newName;
+			oldExtension,
+			newName,
+			newExtension;
 	public File file;
 
-	/**
-	 *
-	 * @param Path the main directory Path
-	 * @param newName the new file name
-	 * @param file
-	 */
-	public CFile(String Path, String newName, File file) {
+	public CFile(String Path, File file, final boolean ignoreExtension) {
 		this.Path = Path;
-		this.oldName = file.getName();
-		this.newName = newName;
+		this.oldName = this.newName = file.getName();
+		this.oldExtension = this.newExtension = "";
 		this.file = file;
+
+		// get the file extension
+		if (this.file.isFile() && ignoreExtension) {
+			int i = this.file.getName().lastIndexOf('.');
+			if (i > 0) {
+				this.oldExtension = this.newExtension = this.oldName.substring(i);
+				this.oldName = this.newName = this.oldName.substring(0, i);
+			}
+		}
 	}
 
 	public CFile() {
 	}
 
 	/**
-	 * rename the file to the name in this.newName checks is the name is different and if a file exists with the same name
+	 * rename the file to the name in this.newName 
+	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean rename() {
-		File NewFile = new File(this.Path + "\\" + this.newName);
+		File NewFile = new File(this.Path + "\\" + this.newName + this.newExtension);
 		if (NewFile.exists() || this.file.getName().equals(this.newName) || this.oldName.equals(this.newName)) {
 			return false;
 		} else {
@@ -54,12 +60,13 @@ public class CFile implements GUItabelList.ITable {
 	}
 
 	/**
-	 * undo the previous renaming rename the file to the name in this.oldName checks is the name is different and if a file exists with the same name
+	 * undo the previous renaming rename the file to the name in this.oldName 
+	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean undoRename() {
-		File NewFile = new File(this.Path + "\\" + this.oldName);
+		File NewFile = new File(this.Path + "\\" + this.oldName + this.oldExtension);
 
 		if (NewFile.exists()) {
 			return false;
