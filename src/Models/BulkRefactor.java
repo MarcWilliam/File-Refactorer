@@ -7,7 +7,7 @@ public class BulkRefactor {
 
 	public static interface IRename {
 
-		public String rename(final String param1, final String param2, final File oldFile, final boolean ignoreExtension);
+		public void rename(final CFile file, String... params);
 	}
 
 	protected ArrayList<CFile> CFiles;
@@ -17,9 +17,8 @@ public class BulkRefactor {
 			forSubDir,
 			ignoreExtension;
 
-	public String param1,
-			param2,
-			originPath;
+	public String originPath,
+			params[];
 
 	public IRename Action;
 
@@ -34,15 +33,14 @@ public class BulkRefactor {
 	 * @param forSubDir
 	 * @param ignoreExtension
 	 */
-	public BulkRefactor(IRename Action, String param1, String param2, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension) {
+	public BulkRefactor(IRename Action, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension, String... params) {
 		this.Action = Action;
-		this.param1 = param1;
-		this.param2 = param2;
 		this.originPath = originPath;
 		this.forFile = forFile;
 		this.forDir = forDir;
 		this.forSubDir = forSubDir;
 		this.ignoreExtension = ignoreExtension;
+		this.params = params;
 	}
 
 	/**
@@ -51,8 +49,7 @@ public class BulkRefactor {
 	 * @return
 	 */
 	public boolean validate() {
-		return param1 != null
-				&& param2 != null
+		return params != null
 				//&& forDir != forSubDir
 				&& new File(this.originPath).exists()
 				&& new File(this.originPath).isDirectory();
@@ -79,13 +76,17 @@ public class BulkRefactor {
 	 */
 	private void make(final String Path) {
 		File[] listOfFiles = new File(Path).listFiles();// get an array of all files and folder in that path
-
+		CFile tmpCFile;
 		for (File tempFile : listOfFiles) {
 			if (tempFile.isFile() && forFile) {
-				this.CFiles.add(new CFile(Path, this.Action.rename(this.param1, this.param2, tempFile, this.ignoreExtension), tempFile));
+				tmpCFile = new CFile(Path, tempFile, this.ignoreExtension);
+				this.Action.rename(tmpCFile, this.params);
+				this.CFiles.add(tmpCFile);
 			} else if (tempFile.isDirectory()) {
 				if (forDir) {
-					this.CFiles.add(new CFile(Path, this.Action.rename(this.param1, this.param2, tempFile, this.ignoreExtension), tempFile));
+					tmpCFile = new CFile(Path, tempFile, this.ignoreExtension);
+					this.Action.rename(tmpCFile, this.params);
+					this.CFiles.add(tmpCFile);
 				} else if (forSubDir) {
 					make(Path + "\\" + tempFile.getName());
 				}
