@@ -11,6 +11,16 @@ package Models;
  */
 public class StringManipulation {
 
+	public static String Implode(String[] imput, String seperator) {
+		String ret = "";
+		for (int i = 0; i < imput.length; i++) {
+			if (imput[i] != null && imput[i].equals("")) {
+				ret += imput[i] + seperator;
+			}
+		}
+		return ret;
+	}
+
 	/**
 	 * The following method converts all the letters into upper/lower case, depending on their position near a space or other special chars.
 	 *

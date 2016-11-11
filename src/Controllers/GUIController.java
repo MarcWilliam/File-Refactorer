@@ -7,8 +7,9 @@ package Controllers;
 
 import GUI.*;
 import Models.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,8 +28,8 @@ public class GUIController {
 	}
 
 	public final void sync(java.awt.event.ActionEvent evt) {
-		this.syncData(evt);
 		this.syncGUI(evt);
+		this.syncData(evt);
 	}
 
 	public final void syncData(java.awt.event.ActionEvent evt) {
@@ -75,7 +76,26 @@ public class GUIController {
 		this.syncData(null);
 		if (this.batchRename.Prepair()) {
 			this.batchRename.rename();
-			new GUItabelList(this.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+			//new GUItabelList(this.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
+
+			// add row to table
+			DefaultTableModel model = (DefaultTableModel) this.window.jTable1.getModel();
+
+			CAction action = CAction.List[this.window.jComboBox_Action.getSelectedIndex()];
+
+			model.addRow(new Object[]{
+				model.getRowCount(),//row index
+				this.batchRename.getCFiles().size(),
+				action.name,
+				this.batchRename.originPath,
+				StringManipulation.Implode(this.batchRename.params, "  ||  ")
+			});
+
+			this.window.jTabbedPane1.add(
+					String.valueOf(this.window.jTabbedPane1.getTabCount() - 2 + 1),
+					CTable.getTable(this.batchRename.getCFiles(), new CFile())
+			);
+
 			this.previousOps.add(this.batchRename);
 		} else {
 			JOptionPane.showMessageDialog(new JPanel(), "Could not rename file/folder", "Error", JOptionPane.ERROR_MESSAGE);
@@ -94,6 +114,12 @@ public class GUIController {
 		this.syncData(null);
 		int lastIndex = previousOps.size() - 1;
 		this.previousOps.remove(lastIndex).undoRename();
+
+		DefaultTableModel model = (DefaultTableModel) this.window.jTable1.getModel();
+		model.removeRow(model.getRowCount() - 1);
+
+		this.window.jTabbedPane1.remove(this.window.jTabbedPane1.getTabCount() - 1);
+
 		this.syncGUI(null);
 	}
 

@@ -23,6 +23,9 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bulk File Refactor");
         setBackground(new java.awt.Color(0, 0, 0));
@@ -31,13 +34,6 @@ public class GUI extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(550, 240));
         setName("main"); // NOI18N
-
-        jButton_FilePath.setText("Load");
-        jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_FilePathActionPerformed(evt);
-            }
-        });
 
         jButton_Run.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Save-as.png"))); // NOI18N
@@ -50,31 +46,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel_param1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_param1.setText("param1");
-
-        jLabel_param2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_param2.setText("param2");
-
-        jLabel_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_FilePath.setText("File Path");
-
-        jCheckBox_SubFolders.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox_SubFolders.setText("Sub Folders");
-
-        jCheckBox_isFiles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox_isFiles.setSelected(true);
-        jCheckBox_isFiles.setText("Files");
-
-        jCheckBox_isFolder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox_isFolder.setText("Folders");
-
-        jTextField_param1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTextField_param2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jButton_Demo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Demo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Start.png"))); // NOI18N
         jButton_Demo.setToolTipText("Demo");
@@ -85,9 +56,6 @@ public class GUI extends javax.swing.JFrame {
                 jButton_DemoActionPerformed(evt);
             }
         });
-
-        jLabel_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_Action.setText("Action");
 
         jButton_Undo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Undo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Undo.png"))); // NOI18N
@@ -102,6 +70,28 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_isFolder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox_isFolder.setText("Folders");
+
+        jCheckBox_isFiles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox_isFiles.setSelected(true);
+        jCheckBox_isFiles.setText("Files");
+
+        jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox_IgnoreExtension.setSelected(true);
+        jCheckBox_IgnoreExtension.setText("Ignore Extension");
+
+        jCheckBox_SubFolders.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox_SubFolders.setText("Sub Folders");
+
+        jLabel_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_FilePath.setText("File Path");
+
+        jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Action.setText("Action");
+
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox_Action.setModel(new DefaultComboBoxModel(Models.CAction.List));
         jComboBox_Action.addActionListener(new java.awt.event.ActionListener() {
@@ -110,124 +100,171 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox_IgnoreExtension.setSelected(true);
-        jCheckBox_IgnoreExtension.setText("Ignore Extension");
+        jTextField_param1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel_param3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_param3.setText("param3");
+        jTextField_param2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextField_param3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextField_param4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jLabel_param2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_param2.setText("param2");
+
+        jLabel_param3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_param3.setText("param3");
+
+        jLabel_param1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_param1.setText("param1");
+
         jLabel_param4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param4.setText("param4");
+
+        jButton_FilePath.setText("Load");
+        jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_FilePathActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_param2, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                .addComponent(jLabel_param3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_param1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_param4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_param4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_param3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_param2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_param1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBox_Action, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_FilePath)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox_isFolder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox_isFiles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox_IgnoreExtension)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox_SubFolders)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
+                        .addComponent(jButton_Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_Run, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_Action, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_Action, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_param1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_param1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_param2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_param2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_param3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_param3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField_param4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_param4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox_isFolder)
+                        .addComponent(jCheckBox_isFiles)
+                        .addComponent(jCheckBox_IgnoreExtension)
+                        .addComponent(jCheckBox_SubFolders))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_Run, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_Demo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_Undo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
+        );
+
+        jTabbedPane1.addTab("Main", jPanel1);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No", "Files", "Action", "Path", "Params"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(10);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(300);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(350);
+        }
+
+        jTabbedPane1.addTab("Operations", jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox_isFolder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox_isFiles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox_IgnoreExtension)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox_SubFolders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
-                        .addComponent(jButton_Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Run, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel_param3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel_param1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_param2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_param4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Action, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_param1)
-                                    .addComponent(jTextField_FilePath)
-                                    .addComponent(jTextField_param2)
-                                    .addComponent(jComboBox_Action, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField_param4, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jTextField_param3)))))
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_param1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_param1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_param2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_param2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_param3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_param3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_param4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_param4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_Action, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_Action, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox_isFolder)
-                        .addComponent(jCheckBox_isFiles)
-                        .addComponent(jCheckBox_IgnoreExtension)
-                        .addComponent(jCheckBox_SubFolders))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton_Run, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_Demo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_Undo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleDescription("an easy way to rename alot of files and folder at once");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
-		this.cController.demo(evt);
-    }//GEN-LAST:event_jButton_DemoActionPerformed
-    private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
-		this.cController.rename(evt);
-    }//GEN-LAST:event_jButton_RunActionPerformed
-    private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
-		this.cController.undo(evt);
-    }//GEN-LAST:event_jButton_UndoActionPerformed
-    private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
-		this.cController.syncGUI(evt);
-    }//GEN-LAST:event_jComboBox_ActionActionPerformed
+
     private void jButton_FilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FilePathActionPerformed
 		JFileChooser browse = new JFileChooser();
 		browse.setDialogTitle("Browse");
@@ -244,6 +281,22 @@ public class GUI extends javax.swing.JFrame {
 			}
 		}
     }//GEN-LAST:event_jButton_FilePathActionPerformed
+
+    private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
+		this.cController.syncGUI(evt);
+    }//GEN-LAST:event_jComboBox_ActionActionPerformed
+
+    private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
+		this.cController.undo(evt);
+    }//GEN-LAST:event_jButton_UndoActionPerformed
+
+    private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
+		this.cController.demo(evt);
+    }//GEN-LAST:event_jButton_DemoActionPerformed
+
+    private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
+		this.cController.rename(evt);
+    }//GEN-LAST:event_jButton_RunActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -296,6 +349,10 @@ public class GUI extends javax.swing.JFrame {
     public final javax.swing.JLabel jLabel_param2 = new javax.swing.JLabel();
     public final javax.swing.JLabel jLabel_param3 = new javax.swing.JLabel();
     public final javax.swing.JLabel jLabel_param4 = new javax.swing.JLabel();
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public final javax.swing.JTabbedPane jTabbedPane1 = new javax.swing.JTabbedPane();
+    public final javax.swing.JTable jTable1 = new javax.swing.JTable();
     public final javax.swing.JTextField jTextField_FilePath = new javax.swing.JTextField();
     public final javax.swing.JTextField jTextField_param1 = new javax.swing.JTextField();
     public final javax.swing.JTextField jTextField_param2 = new javax.swing.JTextField();

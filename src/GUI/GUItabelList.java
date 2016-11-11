@@ -23,9 +23,9 @@ public class GUItabelList extends JFrame {
 	 * @param colName a new object of that class
 	 * @param Title the title of the table
 	 */
-	public GUItabelList(ArrayList<CFile> myData, ITable colName, String Title) {
+	public GUItabelList(ArrayList<CFile> myData, CFile colName, String Title) {
 		this.setTitle(Title);
-		JTable table = new JTable(this.getCells(myData), this.getColumNames(colName));
+		JTable table = new JTable(this.getCells(myData), colName.getColumNames());
 		table.setEnabled(false); // set the tabel to non editabel
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		add(new JScrollPane(table));				// create scroll pane for wrapping the table and add it to the frame
@@ -33,7 +33,7 @@ public class GUItabelList extends JFrame {
 		table.setAutoCreateRowSorter(true); // set the sort by colum
 		//Font f = new Font("serif", Font.PLAIN, 15);
 		//table.setFont(f);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 	}
 
 	private String[][] getCells(ArrayList<CFile> myData) {
@@ -42,13 +42,10 @@ public class GUItabelList extends JFrame {
 		}
 		String[][] Cells = new String[myData.size()][];
 		int i = 0;
-		for (ITable temprow : myData) {
-			Cells[i++] = temprow.getCells();
-		}
+		//	for (ITable temprow : myData) {
+		//		Cells[i++] = temprow.getCells();
+		//	}
 		return Cells;
 	}
 
-	private String[] getColumNames(ITable myData) {
-		return myData.getColumNames();
-	}
 }

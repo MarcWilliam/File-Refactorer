@@ -12,7 +12,7 @@ import java.io.*;
  *
  * @author marcw
  */
-public class CFile implements GUItabelList.ITable {
+public class CFile implements CTable.ITable {
 
 	public String Path,
 			oldName,
@@ -41,7 +41,7 @@ public class CFile implements GUItabelList.ITable {
 	}
 
 	/**
-	 * rename the file to the name in this.newName 
+	 * rename the file to the name in this.newName
 	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
@@ -60,7 +60,7 @@ public class CFile implements GUItabelList.ITable {
 	}
 
 	/**
-	 * undo the previous renaming rename the file to the name in this.oldName 
+	 * undo the previous renaming rename the file to the name in this.oldName
 	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
