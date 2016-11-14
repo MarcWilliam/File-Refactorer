@@ -1,6 +1,7 @@
 package GUI;
 
 import Models.CFile;
+import java.awt.Color;
 import java.util.*;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -30,7 +31,7 @@ public class CTable {
 		));
 		jTable.setAutoCreateRowSorter(true);
 		jScrollPane.setViewportView(jTable);
-
+		jScrollPane.getViewport().setBackground(Color.white);
 		return jScrollPane;
 
 	}

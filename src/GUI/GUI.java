@@ -12,7 +12,11 @@ public class GUI extends javax.swing.JFrame {
 	 */
 	public GUI() {
 		initComponents();
+
+		jScrollPane1.getViewport().setBackground(Color.white);
+		jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
 		this.setLocationRelativeTo(null);
+
 		this.cController = new GUIController(this);
 	}
 
@@ -34,6 +38,10 @@ public class GUI extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(550, 240));
         setName("main"); // NOI18N
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton_Run.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Save-as.png"))); // NOI18N
@@ -70,22 +78,23 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_isFolder.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_isFolder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFolder.setText("Folders");
 
+        jCheckBox_isFiles.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_isFiles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFiles.setSelected(true);
         jCheckBox_isFiles.setText("Files");
 
+        jCheckBox_IgnoreExtension.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_IgnoreExtension.setSelected(true);
         jCheckBox_IgnoreExtension.setText("Ignore Extension");
 
+        jCheckBox_SubFolders.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_SubFolders.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_SubFolders.setText("Sub Folders");
-
-        jLabel_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_FilePath.setText("File Path");
 
         jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -120,7 +129,14 @@ public class GUI extends javax.swing.JFrame {
         jLabel_param4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param4.setText("param4");
 
-        jButton_FilePath.setText("Load");
+        jButton_FilePath.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_FilePath.setText("File path ...");
+        jButton_FilePath.setBorder(null);
+        jButton_FilePath.setBorderPainted(false);
+        jButton_FilePath.setContentAreaFilled(false);
+        jButton_FilePath.setIconTextGap(0);
+        jButton_FilePath.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton_FilePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_FilePathActionPerformed(evt);
@@ -134,19 +150,17 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_param2, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                .addComponent(jLabel_param3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_param1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_param4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4)
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel_Action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_param2, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                    .addComponent(jLabel_param3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_param1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_param4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_param4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField_param3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -175,7 +189,6 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,7 +211,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_param4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_param4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCheckBox_isFolder)
@@ -215,6 +228,10 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Main", jPanel1);
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -257,7 +274,7 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleDescription("an easy way to rename alot of files and folder at once");
@@ -344,7 +361,6 @@ public class GUI extends javax.swing.JFrame {
     public final javax.swing.JCheckBox jCheckBox_isFolder = new javax.swing.JCheckBox();
     public final javax.swing.JComboBox<String> jComboBox_Action = new javax.swing.JComboBox<>();
     public final javax.swing.JLabel jLabel_Action = new javax.swing.JLabel();
-    public final javax.swing.JLabel jLabel_FilePath = new javax.swing.JLabel();
     public final javax.swing.JLabel jLabel_param1 = new javax.swing.JLabel();
     public final javax.swing.JLabel jLabel_param2 = new javax.swing.JLabel();
     public final javax.swing.JLabel jLabel_param3 = new javax.swing.JLabel();
