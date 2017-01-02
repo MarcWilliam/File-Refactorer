@@ -25,8 +25,7 @@ public class BulkRefactor {
 	/**
 	 *
 	 * @param Action
-	 * @param param1
-	 * @param param2
+	 * @param params
 	 * @param originPath
 	 * @param forFile
 	 * @param forDir

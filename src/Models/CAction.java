@@ -33,6 +33,12 @@ public class CAction {
 		 * ******************************************************************************* *
 		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
 		 */
+		new CAction((BulkRefactor.IRename) Auto.Movies, "Auto (Movies)", ""),
+		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+		new CAction((BulkRefactor.IRename) Auto.Series, "Auto (Series)", ""),
+		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
 			file.newName = file.oldName.replace(params[0], "");
 		}, "Remove all", "remove all ocucence of that string", "Target"),
