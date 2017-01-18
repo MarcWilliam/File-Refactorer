@@ -92,7 +92,7 @@ public class GUIController {
 			});
 
 			this.window.jTabbedPane1.add(
-					String.valueOf(this.window.jTabbedPane1.getTabCount() - 2 + 1),
+					" " + String.valueOf(this.window.jTabbedPane1.getTabCount() - 2 + 1) + " ",
 					CTable.getTable(this.batchRename.getCFiles(), new CFile())
 			);
 

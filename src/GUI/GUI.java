@@ -40,6 +40,7 @@ public class GUI extends javax.swing.JFrame {
         setName("main"); // NOI18N
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setFocusable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -48,6 +49,7 @@ public class GUI extends javax.swing.JFrame {
         jButton_Run.setToolTipText("Save");
         jButton_Run.setBorderPainted(false);
         jButton_Run.setContentAreaFilled(false);
+        jButton_Run.setFocusPainted(false);
         jButton_Run.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_RunActionPerformed(evt);
@@ -59,6 +61,7 @@ public class GUI extends javax.swing.JFrame {
         jButton_Demo.setToolTipText("Demo");
         jButton_Demo.setBorderPainted(false);
         jButton_Demo.setContentAreaFilled(false);
+        jButton_Demo.setFocusPainted(false);
         jButton_Demo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_DemoActionPerformed(evt);
@@ -71,6 +74,7 @@ public class GUI extends javax.swing.JFrame {
         jButton_Undo.setBorderPainted(false);
         jButton_Undo.setContentAreaFilled(false);
         jButton_Undo.setEnabled(false);
+        jButton_Undo.setFocusPainted(false);
         jButton_Undo.setIconTextGap(0);
         jButton_Undo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,25 +85,30 @@ public class GUI extends javax.swing.JFrame {
         jCheckBox_isFolder.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_isFolder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFolder.setText("Folders");
+        jCheckBox_isFolder.setFocusPainted(false);
 
         jCheckBox_isFiles.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_isFiles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_isFiles.setSelected(true);
         jCheckBox_isFiles.setText("Files");
+        jCheckBox_isFiles.setFocusPainted(false);
 
         jCheckBox_IgnoreExtension.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_IgnoreExtension.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_IgnoreExtension.setSelected(true);
         jCheckBox_IgnoreExtension.setText("Ignore Extension");
+        jCheckBox_IgnoreExtension.setFocusPainted(false);
 
         jCheckBox_SubFolders.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox_SubFolders.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox_SubFolders.setText("Sub Folders");
+        jCheckBox_SubFolders.setFocusPainted(false);
 
         jTextField_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_Action.setText("Action");
+        jLabel_Action.setFocusable(false);
 
         jComboBox_Action.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox_Action.setModel(new DefaultComboBoxModel(Models.CAction.List));
@@ -119,15 +128,19 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel_param2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param2.setText("param2");
+        jLabel_param2.setFocusable(false);
 
         jLabel_param3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param3.setText("param3");
+        jLabel_param3.setFocusable(false);
 
         jLabel_param1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param1.setText("param1");
+        jLabel_param1.setFocusable(false);
 
         jLabel_param4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_param4.setText("param4");
+        jLabel_param4.setFocusable(false);
 
         jButton_FilePath.setBackground(new java.awt.Color(255, 255, 255));
         jButton_FilePath.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -176,9 +189,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jCheckBox_IgnoreExtension)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox_SubFolders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
                         .addComponent(jButton_Undo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Demo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Run, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -211,7 +224,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_param4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_param4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCheckBox_isFolder)
@@ -226,7 +239,7 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jTabbedPane1.addTab("Main", jPanel1);
+        jTabbedPane1.addTab(" Main ", jPanel1);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
@@ -255,6 +268,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
@@ -264,7 +278,7 @@ public class GUI extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(350);
         }
 
-        jTabbedPane1.addTab("Operations", jScrollPane1);
+        jTabbedPane1.addTab(" Operations ", jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -283,36 +297,36 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_FilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FilePathActionPerformed
-		JFileChooser browse = new JFileChooser();
-		browse.setDialogTitle("Browse");
-		browse.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		browse.setAcceptAllFileFilterUsed(false);
-		browse.setRequestFocusEnabled(rootPaneCheckingEnabled);
-		browse.setCurrentDirectory(new File("."));
+        JFileChooser browse = new JFileChooser();
+        browse.setDialogTitle("Browse");
+        browse.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        browse.setAcceptAllFileFilterUsed(false);
+        browse.setRequestFocusEnabled(rootPaneCheckingEnabled);
+        browse.setCurrentDirectory(new File("."));
 
-		if (browse.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-			if (browse.getSelectedFile().toString() == null) {
-				JOptionPane.showMessageDialog(null, "can't load the path", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				jTextField_FilePath.setText(browse.getSelectedFile().toString());
-			}
-		}
+        if (browse.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            if (browse.getSelectedFile().toString() == null) {
+                JOptionPane.showMessageDialog(null, "can't load the path", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                jTextField_FilePath.setText(browse.getSelectedFile().toString());
+            }
+        }
     }//GEN-LAST:event_jButton_FilePathActionPerformed
 
     private void jComboBox_ActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ActionActionPerformed
-		this.cController.syncGUI(evt);
+        this.cController.syncGUI(evt);
     }//GEN-LAST:event_jComboBox_ActionActionPerformed
 
     private void jButton_UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UndoActionPerformed
-		this.cController.undo(evt);
+        this.cController.undo(evt);
     }//GEN-LAST:event_jButton_UndoActionPerformed
 
     private void jButton_DemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemoActionPerformed
-		this.cController.demo(evt);
+        this.cController.demo(evt);
     }//GEN-LAST:event_jButton_DemoActionPerformed
 
     private void jButton_RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RunActionPerformed
-		this.cController.rename(evt);
+        this.cController.rename(evt);
     }//GEN-LAST:event_jButton_RunActionPerformed
 
 	/**
