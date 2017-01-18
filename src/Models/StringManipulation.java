@@ -12,10 +12,10 @@ package Models;
 public class StringManipulation {
 
 	public static String Implode(String[] imput, String seperator) {
-		String ret = "";
-		for (int i = 0; i < imput.length; i++) {
-			if (imput[i] != null && imput[i].equals("")) {
-				ret += imput[i] + seperator;
+		String ret = imput[0] != null ? imput[0] : "";
+		for (int i = 1; i < imput.length; i++) {
+			if (imput[i] != null) {
+				ret += seperator + imput[i];
 			}
 		}
 		return ret;
