@@ -20,7 +20,7 @@ public class BulkRefactor {
 	public String originPath,
 			params[];
 
-	public IRename Action;
+	public IRename action;
 
 	/**
 	 *
@@ -33,7 +33,7 @@ public class BulkRefactor {
 	 * @param ignoreExtension
 	 */
 	public BulkRefactor(IRename Action, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension, String... params) {
-		this.Action = Action;
+		this.action = Action;
 		this.originPath = originPath;
 		this.forFile = forFile;
 		this.forDir = forDir;
@@ -64,7 +64,7 @@ public class BulkRefactor {
 			return false;
 		}
 		this.CFiles = new ArrayList<>();
-		make(this.originPath);
+		make(this.originPath, null);
 		return true;
 	}
 
@@ -73,22 +73,20 @@ public class BulkRefactor {
 	 *
 	 * @param Path used for recursion to loop all sub directory
 	 */
-	private void make(final String Path) {
+	private void make(final String Path, final CFile parent) {
 		File[] listOfFiles = new File(Path).listFiles();// get an array of all files and folder in that path
 		CFile tmpCFile;
 		for (File tempFile : listOfFiles) {
-			if (tempFile.isFile() && forFile) {
-				tmpCFile = new CFile(Path, tempFile, this.ignoreExtension);
-				this.Action.rename(tmpCFile, this.params);
+			tmpCFile = new CFile(Path, tempFile, parent, this.ignoreExtension);
+
+			if ((tempFile.isFile() && forFile)
+					|| (tempFile.isDirectory() && forDir)) {
+				this.action.rename(tmpCFile, this.params);
 				this.CFiles.add(tmpCFile);
-			} else if (tempFile.isDirectory()) {
-				if (forDir) {
-					tmpCFile = new CFile(Path, tempFile, this.ignoreExtension);
-					this.Action.rename(tmpCFile, this.params);
-					this.CFiles.add(tmpCFile);
-				} else if (forSubDir) {
-					make(Path + "\\" + tempFile.getName());
-				}
+			}
+
+			if (tempFile.isDirectory() && forSubDir) {
+				make(Path + "\\" + tmpCFile.oldName, tmpCFile);
 			}
 		}
 	}

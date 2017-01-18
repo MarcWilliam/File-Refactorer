@@ -14,18 +14,21 @@ import java.io.*;
  */
 public class CFile implements CTable.ITable {
 
-	public String Path,
+	public String path,
 			oldName,
 			oldExtension,
 			newName,
 			newExtension;
-	public File file;
 
-	public CFile(String Path, File file, final boolean ignoreExtension) {
-		this.Path = Path;
+	public File file;
+	public CFile parent;
+
+	public CFile(String path, File file, CFile parent, final boolean ignoreExtension) {
+		this.path = path;
 		this.oldName = this.newName = file.getName();
 		this.oldExtension = this.newExtension = "";
 		this.file = file;
+		this.parent = parent;
 
 		// get the file extension
 		if (this.file.isFile() && ignoreExtension) {
@@ -47,7 +50,7 @@ public class CFile implements CTable.ITable {
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean rename() {
-		File NewFile = new File(this.Path + "\\" + this.newName + this.newExtension);
+		File NewFile = new File(this.getNewPath() + "\\" + this.newName + this.newExtension);
 		if (NewFile.exists() || this.file.getName().equals(this.newName) || this.oldName.equals(this.newName)) {
 			return false;
 		} else {
@@ -66,7 +69,7 @@ public class CFile implements CTable.ITable {
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean undoRename() {
-		File NewFile = new File(this.Path + "\\" + this.oldName + this.oldExtension);
+		File NewFile = new File(this.getOldPath() + "\\" + this.oldName + this.oldExtension);
 
 		if (NewFile.exists()) {
 			return false;
@@ -77,6 +80,25 @@ public class CFile implements CTable.ITable {
 			}
 			return false;
 		}
+	}
+
+	private String getPath(boolean isOldPath) {
+		CFile currentNode = this;
+		String result = "";
+		while (currentNode.parent != null) {
+			currentNode = currentNode.parent;
+			String temp = isOldPath ? currentNode.oldName : currentNode.newName;
+			result = "\\" + temp + result;
+		}
+		return currentNode.path + result;
+	}
+
+	public String getNewPath() {
+		return getPath(false);
+	}
+
+	public String getOldPath() {
+		return getPath(true);
 	}
 
 	@Override

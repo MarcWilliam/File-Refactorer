@@ -20,19 +20,19 @@ public class Auto {
 	};
 
 	static public String Series(String imput) {
-		imput = TrimStringStart(imput);
-		imput = TrimStringEnd(imput);
 		imput = RemoveChar(imput);
 		imput = RemoveWords(imput);
+		imput = TrimStringStart(imput);
+		imput = TrimStringEnd(imput);
 
 		return imput;
 	}
 
 	static public String Movies(String imput) {
-		imput = TrimStringStart(imput);
-		imput = TrimStringEnd(imput);
 		imput = RemoveChar(imput);
 		imput = RemoveWords(imput);
+		imput = TrimStringStart(imput);
+		imput = TrimStringEnd(imput);
 
 		return imput;
 	}
