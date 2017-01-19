@@ -14,47 +14,85 @@ import java.io.*;
  */
 public class CFile implements ITableRow {
 
-	public String path,
-			oldName,
-			oldExtension,
-			newName,
-			newExtension;
+	public class State {
+
+		public String name,
+				extension,
+				path;
+
+		public CFile.State parent;
+
+		public boolean active;//if this is the active state or not
+
+		public State() {
+		}
+
+		public State(String name, String extension, String path, CFile.State parent, boolean active) {
+			this.name = name;
+			this.extension = extension;
+			this.path = path;
+			this.parent = parent;
+			this.active = active;
+		}
+
+		private String getPath() {
+			CFile.State currentNode = this;
+			String result = "";
+			while (currentNode.parent != null) {
+				currentNode = currentNode.parent;
+				String temp = currentNode.name;
+				result = "\\" + temp + result;
+			}
+			return currentNode.path + result;
+		}
+
+		public String getFullName() {
+			return this.name + this.extension;
+		}
+
+		public String getFullPath() {
+			return this.getPath() + "\\" + this.name + this.extension;
+		}
+	}
+
+	public CFile.State source,
+			destination;
 
 	public File file;
-	public CFile parent;
+
+	public CFile() {
+	}
 
 	public CFile(String path, File file, CFile parent, final boolean ignoreExtension) {
-		this.path = path;
-		this.oldName = this.newName = file.getName();
-		this.oldExtension = this.newExtension = "";
+		this.source = new State(file.getName(), "", path, parent.source, true);
+		this.destination = new State(file.getName(), "", path, parent.destination, false);
+
 		this.file = file;
-		this.parent = parent;
 
 		// get the file extension
 		if (this.file.isFile() && ignoreExtension) {
 			int i = this.file.getName().lastIndexOf('.');
 			if (i > 0) {
-				this.oldExtension = this.newExtension = this.oldName.substring(i);
-				this.oldName = this.newName = this.oldName.substring(0, i);
+				this.source.extension = this.destination.extension = this.source.name.substring(i);
+				this.source.name = this.destination.name = this.source.name.substring(0, i);
 			}
 		}
 	}
 
-	public CFile() {
-	}
-
 	/**
-	 * rename the file to the name in this.newName
+	 * rename the file to the name in this.source.name
 	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean rename() {
-		File NewFile = new File(this.getNewPath() + "\\" + this.newName + this.newExtension);
-		if (NewFile.exists() || this.file.getName().equals(this.newName) || this.oldName.equals(this.newName)) {
+		File NewFile = new File(this.destination.getFullPath());
+		if (NewFile.exists() || this.file.getName().equals(this.source.name) || this.destination.name.equals(this.source.name)) {
 			return false;
 		} else {
 			if (this.file.renameTo(NewFile)) {
+				this.source.active = false;
+				this.destination.active = true;
 				this.file = NewFile;
 				return true;
 			}
@@ -63,18 +101,20 @@ public class CFile implements ITableRow {
 	}
 
 	/**
-	 * undo the previous renaming rename the file to the name in this.oldName
+	 * undo the previous renaming rename the file to the name in this.destination.name
 	 * checks is the name is different and if a file exists with the same name
 	 *
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean undoRename() {
-		File NewFile = new File(this.getOldPath() + "\\" + this.oldName + this.oldExtension);
+		File NewFile = new File(this.source.getFullPath());
 
 		if (NewFile.exists()) {
 			return false;
 		} else {
 			if (this.file.renameTo(NewFile)) {
+				this.source.active = true;
+				this.destination.active = false;
 				this.file = NewFile;
 				return true;
 			}
@@ -82,31 +122,12 @@ public class CFile implements ITableRow {
 		}
 	}
 
-	private String getPath(boolean isOldPath) {
-		CFile currentNode = this;
-		String result = "";
-		while (currentNode.parent != null) {
-			currentNode = currentNode.parent;
-			String temp = isOldPath ? currentNode.oldName : currentNode.newName;
-			result = "\\" + temp + result;
-		}
-		return currentNode.path + result;
-	}
-
-	public String getNewPath() {
-		return getPath(false);
-	}
-
-	public String getOldPath() {
-		return getPath(true);
-	}
-
 	@Override
 	public Object[] getCells() {
 		return new Object[]{
-			(this.newName.equals(this.oldName) ? "  " : "* ") + (this.file.isFile() ? "File" : "Folder"),
-			this.oldName,
-			this.newName
+			(this.source.name.equals(this.destination.name) ? "  " : "* ") + (this.file.isFile() ? "File" : "Folder"),
+			this.destination.name,
+			this.source.name
 		};
 	}
 

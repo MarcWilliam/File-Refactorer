@@ -49,27 +49,27 @@ public class CAction {
 		//////////////////////////////////////////////////////////////////////////////////
 
 		new CAction((IRename) (final CFile file, final String... params) -> {
-			file.newName = file.oldName.replace(params[0], "");
+			file.destination.name = file.source.name.replace(params[0], "");
 		}, "Remove all", "remove all ocucence of that string", "Target"),
 		//////////////////////////////////////////////////////////////////////////////////
 
 		new CAction((IRename) (final CFile file, final String... params) -> {
-			file.newName = file.oldName.replace(params[0], params[1]);
+			file.destination.name = file.source.name.replace(params[0], params[1]);
 		}, "Replace all", "replace all ocucence of that string", "Target", "Replacement"),
 		//////////////////////////////////////////////////////////////////////////////////
 
 		new CAction((IRename) (final CFile file, final String... params) -> {
-			file.newName = file.oldName.replaceAll(params[0], params[1]);
+			file.destination.name = file.source.name.replaceAll(params[0], params[1]);
 		}, "Regex", "replace all ocucence of that string using regex", "Target", "Replacement"),
 		//////////////////////////////////////////////////////////////////////////////////
 
 		new CAction((IRename) (final CFile file, final String... params) -> {
-			file.newName = file.oldName + params[0];
+			file.destination.name = file.source.name + params[0];
 		}, "Append", "Append a sting to the file", "Append"),
 		//////////////////////////////////////////////////////////////////////////////////
 
 		new CAction((IRename) (final CFile file, final String... params) -> {
-			file.newName = params[0] + file.oldName;
+			file.destination.name = params[0] + file.source.name;
 		}, "Prepend", "Append a sting to the file", "Prepend")
 
 	};

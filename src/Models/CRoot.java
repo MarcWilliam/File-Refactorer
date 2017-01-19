@@ -89,7 +89,7 @@ public class CRoot implements ITableRow {
 			}
 
 			if (tempFile.isDirectory() && forSubDir) {
-				make(Path + "\\" + tmpCFile.oldName, tmpCFile);
+				make(Path + "\\" + tmpCFile.source.name, tmpCFile);
 			}
 		}
 	}

@@ -12,11 +12,11 @@ package Models;
 public class Auto {
 
 	static CAction.IRename Series = (final CFile file, final String... params) -> {
-		file.newName = Auto.Series(file.oldName);
+		file.destination.name = Auto.Series(file.source.name);
 	};
 
 	static CAction.IRename Movies = (final CFile file, final String... params) -> {
-		file.newName = Auto.Movies(file.oldName);
+		file.destination.name = Auto.Movies(file.source.name);
 	};
 
 	static public String Series(String imput) {
