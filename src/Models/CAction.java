@@ -11,16 +11,25 @@ package Models;
  */
 public class CAction {
 
-	public BulkRefactor.IRename Action;
+	public static interface IRename {
+
+		public void rename(final CFile file, String... params);
+	}
+
+	public IRename Action;
 	public String name,
 			description,
 			params[];
 
-	private CAction(BulkRefactor.IRename Action, String Name, String Description, String... params) {
+	private CAction(IRename Action, String Name, String Description, String... params) {
 		this.Action = Action;
 		this.name = Name;
 		this.description = Description;
 		this.params = params;
+	}
+
+	public void rename(final CFile file, String... params) {
+		this.Action.rename(file, params);
 	}
 
 	@Override
@@ -28,43 +37,44 @@ public class CAction {
 		return name + "  :  " + description;
 	}
 
+	/**
+	 * ******************************************************************************* *
+	 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
+	 */
 	public final static CAction[] List = {
-		/**
-		 * ******************************************************************************* *
-		 * * * * * * * * * * * * * * add any custom actions here * * * * * * * * * * * * * *
-		 */
-		new CAction((BulkRefactor.IRename) Auto.Movies, "Auto (Movies)", ""),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		new CAction((IRename) Auto.Movies, "Auto (Movies)", ""),
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) Auto.Series, "Auto (Series)", ""),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		new CAction((IRename) Auto.Series, "Auto (Series)", ""),
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+		new CAction((IRename) (final CFile file, final String... params) -> {
 			file.newName = file.oldName.replace(params[0], "");
 		}, "Remove all", "remove all ocucence of that string", "Target"),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+		new CAction((IRename) (final CFile file, final String... params) -> {
 			file.newName = file.oldName.replace(params[0], params[1]);
 		}, "Replace all", "replace all ocucence of that string", "Target", "Replacement"),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+		new CAction((IRename) (final CFile file, final String... params) -> {
 			file.newName = file.oldName.replaceAll(params[0], params[1]);
 		}, "Regex", "replace all ocucence of that string using regex", "Target", "Replacement"),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+		new CAction((IRename) (final CFile file, final String... params) -> {
 			file.newName = file.oldName + params[0];
 		}, "Append", "Append a sting to the file", "Append"),
-		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		//////////////////////////////////////////////////////////////////////////////////
 
-		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+		new CAction((IRename) (final CFile file, final String... params) -> {
 			file.newName = params[0] + file.oldName;
 		}, "Prepend", "Append a sting to the file", "Prepend")
+
+	};
 	/**
 	 * ******************************************************************************* *
 	 * * * * * * * * * * * * * * * End of Custom Actions * * * * * * * * * * * * * * * *
 	 */
-	};
 }

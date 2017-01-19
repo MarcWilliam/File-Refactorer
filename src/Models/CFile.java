@@ -5,14 +5,14 @@
  */
 package Models;
 
-import GUI.*;
+import Interfaces.ITableRow;
 import java.io.*;
 
 /**
  *
  * @author marcw
  */
-public class CFile implements CTable.ITable {
+public class CFile implements ITableRow {
 
 	public String path,
 			oldName,
@@ -102,11 +102,12 @@ public class CFile implements CTable.ITable {
 	}
 
 	@Override
-	public String[] getCells() {
-		return new String[]{
+	public Object[] getCells() {
+		return new Object[]{
 			(this.newName.equals(this.oldName) ? "  " : "* ") + (this.file.isFile() ? "File" : "Folder"),
 			this.oldName,
-			this.newName};
+			this.newName
+		};
 	}
 
 	@Override
@@ -114,7 +115,8 @@ public class CFile implements CTable.ITable {
 		return new String[]{
 			"Type",
 			"Original Name",
-			"New Name"};
+			"New Name"
+		};
 	}
 
 }

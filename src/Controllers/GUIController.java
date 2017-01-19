@@ -6,6 +6,7 @@
 package Controllers;
 
 import GUI.*;
+import Interfaces.ITableRow;
 import Models.*;
 import java.util.*;
 import javax.swing.*;
@@ -18,8 +19,8 @@ import javax.swing.table.DefaultTableModel;
 public class GUIController {
 
 	public final GUI window;
-	public BulkRefactor batchRename;
-	public final ArrayList<BulkRefactor> previousOps;
+	public CRoot CurrentRoot;
+	public final ArrayList<CRoot> previousOps;
 
 	public GUIController(GUI window) {
 		this.window = window;
@@ -39,8 +40,9 @@ public class GUIController {
 			params[i] = this.window.jTextField_params[i].getText();
 		}
 
-		this.batchRename = new BulkRefactor(
-				CAction.List[this.window.jComboBox_Action.getSelectedIndex()].Action,
+		this.CurrentRoot = new CRoot(
+				this.previousOps.size(),
+				CAction.List[this.window.jComboBox_Action.getSelectedIndex()],
 				this.window.jTextField_FilePath.getText(),
 				this.window.jCheckBox_isFiles.isSelected(),
 				this.window.jCheckBox_isFolder.isSelected(),
@@ -74,8 +76,8 @@ public class GUIController {
 
 	public final void rename(java.awt.event.ActionEvent evt) {
 		this.syncData(null);
-		if (this.batchRename.Prepair()) {
-			this.batchRename.rename();
+		if (this.CurrentRoot.Prepair()) {
+			this.CurrentRoot.rename();
 			//new GUItabelList(this.batchRename.getCFiles(), new CFile(), "Renamed").setVisible(true);
 
 			// add row to table
@@ -83,20 +85,13 @@ public class GUIController {
 
 			CAction action = CAction.List[this.window.jComboBox_Action.getSelectedIndex()];
 
-			model.addRow(new Object[]{
-				model.getRowCount(),//row index
-				this.batchRename.getCFiles().size(),
-				action.name,
-				this.batchRename.originPath,
-				StringManipulation.Implode(this.batchRename.params, "  ||  ")
-			});
+			model.addRow(this.CurrentRoot.getCells());
 
-			this.window.jTabbedPane1.add(
-					" " + String.valueOf(this.window.jTabbedPane1.getTabCount() - 2 + 1) + " ",
-					CTable.getTable(this.batchRename.getCFiles(), new CFile())
+			this.window.jTabbedPane1.add(" " + String.valueOf(this.window.jTabbedPane1.getTabCount() - 2 + 1) + " ",
+					TableGenerator.ToTable((ArrayList<ITableRow>) (ArrayList<?>) this.CurrentRoot.getCFiles(), new CFile())
 			);
 
-			this.previousOps.add(this.batchRename);
+			this.previousOps.add(this.CurrentRoot);
 		} else {
 			JOptionPane.showMessageDialog(new JPanel(), "Could not rename file/folder", "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -105,8 +100,10 @@ public class GUIController {
 
 	public final void demo(java.awt.event.ActionEvent evt) {
 		this.syncData(null);
-		this.batchRename.Prepair();
-		new GUItabelList(this.batchRename.getCFiles(), new CFile(), "test run").setVisible(true);
+		this.CurrentRoot.Prepair();
+		TableGenerator.ToFrame((ArrayList<ITableRow>) (ArrayList<?>) this.CurrentRoot.getCFiles(),
+				new CFile(),
+				"test run").setVisible(true);
 		this.syncGUI(null);
 	}
 

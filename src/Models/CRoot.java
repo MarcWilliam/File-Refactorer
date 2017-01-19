@@ -1,16 +1,14 @@
 package Models;
 
+import Interfaces.ITableRow;
 import java.io.*;
 import java.util.*;
 
-public class BulkRefactor {
-
-	public static interface IRename {
-
-		public void rename(final CFile file, String... params);
-	}
+public class CRoot implements ITableRow {
 
 	protected ArrayList<CFile> CFiles;
+
+	public int operationNumber;
 
 	public boolean forFile,
 			forDir,
@@ -20,7 +18,10 @@ public class BulkRefactor {
 	public String originPath,
 			params[];
 
-	public IRename action;
+	public CAction action;
+
+	public CRoot() {
+	}
 
 	/**
 	 *
@@ -32,7 +33,8 @@ public class BulkRefactor {
 	 * @param forSubDir
 	 * @param ignoreExtension
 	 */
-	public BulkRefactor(IRename Action, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension, String... params) {
+	public CRoot(int operationNumber, CAction Action, String originPath, boolean forFile, boolean forDir, boolean forSubDir, boolean ignoreExtension, String... params) {
+		this.operationNumber = operationNumber;
 		this.action = Action;
 		this.originPath = originPath;
 		this.forFile = forFile;
@@ -49,7 +51,8 @@ public class BulkRefactor {
 	 */
 	public boolean validate() {
 		return params != null
-				//&& forDir != forSubDir
+				&& this.originPath != null
+				&& this.action != null
 				&& new File(this.originPath).exists()
 				&& new File(this.originPath).isDirectory();
 	}
@@ -120,5 +123,21 @@ public class BulkRefactor {
 	 */
 	public ArrayList<CFile> getCFiles() {
 		return this.CFiles;
+	}
+
+	@Override
+	public Object[] getCells() {
+		return new Object[]{
+			this.operationNumber,
+			this.getCFiles().size(),
+			action.name,
+			this.originPath,
+			StringManipulation.Implode(this.params, "  ||  ")
+		};
+	}
+
+	@Override
+	public String[] getColumNames() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }

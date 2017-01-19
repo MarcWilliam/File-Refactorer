@@ -11,11 +11,11 @@ package Models;
  */
 public class Auto {
 
-	static BulkRefactor.IRename Series = (final CFile file, final String... params) -> {
+	static CAction.IRename Series = (final CFile file, final String... params) -> {
 		file.newName = Auto.Series(file.oldName);
 	};
 
-	static BulkRefactor.IRename Movies = (final CFile file, final String... params) -> {
+	static CAction.IRename Movies = (final CFile file, final String... params) -> {
 		file.newName = Auto.Movies(file.oldName);
 	};
 
