@@ -43,15 +43,11 @@ public class CFile implements ITableRow {
 				String temp = currentNode.name;
 				result = "\\" + temp + result;
 			}
-			return currentNode.path + result;
+			return currentNode.path + result + "\\" + this.name + "." + this.extension;
 		}
 
 		public String getFullName() {
 			return this.name + this.extension;
-		}
-
-		public String getFullPath() {
-			return this.getPath() + "\\" + this.name + this.extension;
 		}
 	}
 
@@ -64,16 +60,25 @@ public class CFile implements ITableRow {
 	}
 
 	public CFile(String path, File file, CFile parent, final boolean ignoreExtension) {
-		this.source = new State(file.getName(), "", path, parent.source, true);
-		this.destination = new State(file.getName(), "", path, parent.destination, false);
-
 		this.file = file;
+
+		this.source = new CFile.State(file.getName(),
+				"",
+				path,
+				parent != null ? parent.source : null,
+				true);
+
+		this.destination = new CFile.State(file.getName(),
+				"",
+				path,
+				parent != null ? parent.destination : null,
+				false);
 
 		// get the file extension
 		if (this.file.isFile() && ignoreExtension) {
 			int i = this.file.getName().lastIndexOf('.');
 			if (i > 0) {
-				this.source.extension = this.destination.extension = this.source.name.substring(i);
+				this.source.extension = this.destination.extension = this.source.name.substring(i + 1);//+1 to remove the .
 				this.source.name = this.destination.name = this.source.name.substring(0, i);
 			}
 		}
@@ -86,7 +91,7 @@ public class CFile implements ITableRow {
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean rename() {
-		File NewFile = new File(this.destination.getFullPath());
+		File NewFile = new File(this.destination.getPath());
 		if (NewFile.exists() || this.file.getName().equals(this.source.name) || this.destination.name.equals(this.source.name)) {
 			return false;
 		} else {
@@ -107,7 +112,7 @@ public class CFile implements ITableRow {
 	 * @return true if and only if the renaming succeeded; false otherwise
 	 */
 	public boolean undoRename() {
-		File NewFile = new File(this.source.getFullPath());
+		File NewFile = new File(this.source.getPath());
 
 		if (NewFile.exists()) {
 			return false;
