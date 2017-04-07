@@ -45,7 +45,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton_Run.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Save-as.png"))); // NOI18N
+        jButton_Run.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save-as.png"))); // NOI18N
         jButton_Run.setToolTipText("Save");
         jButton_Run.setBorderPainted(false);
         jButton_Run.setContentAreaFilled(false);
@@ -57,7 +57,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton_Demo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Demo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Start.png"))); // NOI18N
+        jButton_Demo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Start.png"))); // NOI18N
         jButton_Demo.setToolTipText("Demo");
         jButton_Demo.setBorderPainted(false);
         jButton_Demo.setContentAreaFilled(false);
@@ -69,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton_Undo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Undo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Icons/Undo.png"))); // NOI18N
+        jButton_Undo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo.png"))); // NOI18N
         jButton_Undo.setToolTipText("Undo");
         jButton_Undo.setBorderPainted(false);
         jButton_Undo.setContentAreaFilled(false);
@@ -172,7 +172,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel_param3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel_param1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel_param4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                            .addComponent(jButton_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_param4, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -224,7 +224,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_param4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_param4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCheckBox_isFolder)
@@ -288,7 +288,7 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleDescription("an easy way to rename alot of files and folder at once");
