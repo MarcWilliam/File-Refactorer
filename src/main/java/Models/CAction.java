@@ -61,7 +61,15 @@ public class CAction {
 
 		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
 			file.newName = params[0] + file.oldName;
-		}, "Prepend", "Append a sting to the file", "Prepend")
+		}, "Prepend", "Append a sting to the file", "Prepend"),
+		//////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+		new CAction((BulkRefactor.IRename) (final CFile file, final String... params) -> {
+			file.newName = file.oldName
+					.replaceAll("([a-z])([A-Z]+)", "$1-$2")
+					.toLowerCase();
+		}, "camelcase to hyphen", "", "")
+
 	/**
 	 * ******************************************************************************* *
 	 * * * * * * * * * * * * * * * End of Custom Actions * * * * * * * * * * * * * * * *
